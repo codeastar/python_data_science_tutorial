@@ -1,2 +1,2 @@
 # Data Science Tutorial: Iris Prediction 
-A data science tutoral for absolutely Python beginners
+A data science tutorial for absolutely Python beginners
