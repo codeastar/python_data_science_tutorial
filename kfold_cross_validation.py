@@ -1,12 +1,14 @@
 import pandas as pd
 import numpy as np
 from sklearn import model_selection
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
-from sklearn.linear_model import LogisticRegression
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
 
 #using iris data set
@@ -14,12 +16,14 @@ df = pd.read_csv("http://archive.ics.uci.edu/ml/machine-learning-databases/iris/
 names = ["Sepal Length", "Sepal Width", "Petal Length", "Petal Width", "Class"])
 
 models = []
-models.append(("DT", DecisionTreeClassifier()) )
+models.append(("LoR", LogisticRegression()) )
+models.append(("LDA", LinearDiscriminantAnalysis()) )
+models.append(("QDA", QuadraticDiscriminantAnalysis()) )
 models.append(("NB", GaussianNB() ))
 models.append(("KNN", KNeighborsClassifier()) )
-models.append(("LD", LinearDiscriminantAnalysis()) )
-models.append(("LR", LogisticRegression()) )
 models.append(("SVM", SVC()) )
+models.append(("DT", DecisionTreeClassifier()) )
+models.append(("RF", RandomForestClassifier()) )
 
 model_names = []
 means = []
