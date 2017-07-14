@@ -3,10 +3,12 @@ import numpy as np
 from sklearn import model_selection
 from sklearn.linear_model import LogisticRegression
 from sklearn.naive_bayes import GaussianNB
-from sklearn.neighbors import KNeighborsClassifier
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
+from sklearn.linear_model import SGDClassifier
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 import matplotlib.pyplot as plt
@@ -19,9 +21,11 @@ models = []
 models.append(("LoR", LogisticRegression()) )
 models.append(("LDA", LinearDiscriminantAnalysis()) )
 models.append(("QDA", QuadraticDiscriminantAnalysis()) )
-models.append(("NB", GaussianNB() ))
+models.append(("SVC", SVC()) )
+models.append(("LSVC", LinearSVC()) )
+models.append(("SGD", SGDClassifier()) )
 models.append(("KNN", KNeighborsClassifier()) )
-models.append(("SVM", SVC()) )
+models.append(("NB", GaussianNB() ))
 models.append(("DT", DecisionTreeClassifier()) )
 models.append(("RF", RandomForestClassifier()) )
 
@@ -58,6 +62,9 @@ for name, model in models:
      print("Standard Deviation: " + str(cv_results.std()))
      means.append(cv_results.mean())
      stds.append(cv_results.std())
+
+#bigger size in inches (width, height) & resolution(DPI)        
+plt.figure(figsize=(9, 5), dpi=100)        
         
 #plot the graphs with bar chart
 x_loc = np.arange(len(models)) # the x locations for the groups
@@ -78,6 +85,4 @@ def addLabel(rects):
 
 addLabel(models_graph)
 
-#with bigger graph size
-plt.figure(figsize=(150,150)) 
 plt.show()
